@@ -1,0 +1,19 @@
+<div class="container">
+  <div *ngIf="newCart.length == 0" class="text-center">
+    <h1 class="display-1">Cart empty</h1>
+    <button routerLink="/menu" class="btn btn-primary w-50 mt-4">Menu</button>
+  </div>
+  <div *ngIf="newCart.length > 0">
+    <div class="border p-4 rounded-3 shadow">
+        <div class="d-flex justify-content-between align-content-center">
+          <h1>Cart Items: </h1>
+          <p class="border border-danger p-2 rounded-3">Order more than 40% to get 15% discount!</p>
+        </div>
+        <div *ngFor="let item of newCart" class="px-3">
+            <p>{{ item.name }} | <span class="text-success">{{ item.price }}$</span></p>
+            <hr>
+        </div>
+        <h3 class="text-success">Total:{{ sum }} $</h3>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="container mt-5">
+  <h1 class="text-center mb-5">Menu</h1>
+  <div class="row row-cols-lg-3 row-cols-md-2 mx-auto g-4">
+    <div *ngFor="let item of products; index as i">
+      <div class="card mx-auto" style="width: 18rem">
+        <img
+          src="{{ item.image }}"
+          class="card-img-top"
+          style="height: 18rem; object-fit: cover"
+        />
+        <div class="card-body">
+          <h4 class="card-title">{{ item.name }}</h4>
+          <p class="card-text">{{ item.description }}</p>
+          <p class="card-text text-success font-bold display-6">{{ item.price }} $</p>
+          <div class="d-flex flex-column flex-md-row">
+            <div class="">
+              <button routerLink="/details/{{ i }}" class="btn btn-primary d-block w-100"
+                >Details</button
+              >
+              <div *ngIf="item.available">
+                <button (click)="addToCart(item)" class="btn btn-success d-block mt-2 w-100"
+                >Add To Cart</button>
+              </div>
+            </div>
+            <div class="text-center fs-3 mx-auto">
+              <div *ngIf="item.available">
+                <p class="text-success mt-3">Available</p>
+              </div>
+              <div *ngIf="!item.available">
+                <p class="text-danger">Sold Out</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
