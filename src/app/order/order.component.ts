@@ -9,16 +9,46 @@ import { IProduct } from '../products';
 })
 export class OrderComponent implements OnInit {
   newCart: Array<IProduct> = [];
-  sum: any = 0
+  sum: any = 0;
 
   constructor(private cs: OrderService) {}
 
   ngOnInit(): void {
     this.newCart = this.cs.cart;
-    this.newCart.forEach(par => {
-      this.sum += par.price
-    })
+    this.sumUp()
+  }
 
-    console.log(this.sum)
+  addQtty(index: number): void {
+    this.newCart.forEach((product, i) => {
+      if (i === index) {
+        product.qtty++;
+        this.sumUp()
+      }
+    });
+  }
+
+  subQtty(index: number): void {
+    this.newCart.forEach((product, i) => {
+      if (i === index) {
+        product.qtty--;
+        this.removeFromCart(index)
+        this.sumUp()
+      }
+    });
+  }
+
+  removeFromCart(index: number) {
+    if(this.newCart[index].qtty == 0) {
+      this.newCart.splice(index, 1)
+      this.newCart[index].qtty == 1
+    }
+  }
+
+  sumUp() {
+    this.sum = 0;
+    this.newCart.forEach((par) => {
+      this.sum += par.price * par.qtty;
+      console.log(this.sum)
+    }); 
   }
 }

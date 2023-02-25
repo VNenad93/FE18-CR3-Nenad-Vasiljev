@@ -1,19 +1,28 @@
 <div class="container">
-  <div *ngIf="newCart.length == 0" class="text-center">
-    <h1 class="display-1">Cart empty</h1>
-    <button routerLink="/menu" class="btn btn-primary w-50 mt-4">Menu</button>
-  </div>
-  <div *ngIf="newCart.length > 0">
-    <div class="border p-4 rounded-3 shadow">
-        <div class="d-flex justify-content-between align-content-center">
-          <h1>Cart Items: </h1>
-          <p class="border border-danger p-2 rounded-3">Order more than 40% to get 15% discount!</p>
-        </div>
-        <div *ngFor="let item of newCart" class="px-3">
-            <p>{{ item.name }} | <span class="text-success">{{ item.price }}$</span></p>
-            <hr>
-        </div>
-        <h3 class="text-success">Total:{{ sum }} $</h3>
+  <div style="max-width: 800px; margin: 0 auto;">
+    <div *ngIf="newCart.length == 0" class="text-center">
+      <h1 class="display-1">Cart empty</h1>
+      <h3 class="display-5">Please take a look at our menu!</h3>
+      <button routerLink="/menu" class="btn btn-primary w-50 mt-4">Menu</button>
+    </div>
+    <div *ngIf="newCart.length > 0">
+      <div class="border p-4 rounded-3 shadow">
+          <div class="d-flex justify-content-between align-content-center">
+            <h1>Cart Items: </h1>
+            <p class="border border-danger p-2 rounded-3">Order more than 40$ to get 15% discount!</p>
+          </div>
+          <div *ngFor="let item of newCart; index as i">
+              <div class="cart-cont">
+                <p style="width: 30%; border: 1px solid gainsboro;">{{ item.name }}</p>
+                <span class="text-success" style="width: 15%">{{ item.price }}$</span>
+                <p class="bg-success text-white square" (click)="addQtty(i)">+</p>
+                <p class="box">{{ item.qtty }}</p>
+                <p class="text-white bg-warning square" (click)="subQtty(i)">-</p>
+                <p class="text-white bg-danger square">x</p>
+              </div>
+          </div>
+          <h3 class="text-success">Total:{{ sum }} $</h3>
+      </div>
     </div>
   </div>
 </div>

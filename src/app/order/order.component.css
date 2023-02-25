@@ -1,0 +1,25 @@
+.cart-cont {
+    display: flex;
+    flex: 1 1 0px;
+    justify-content: space-between;
+    border-bottom: 1px solid gainsboro;
+    margin-bottom: .5rem;
+}
+
+.square {
+    width: 2rem;
+    border-radius: 5px;
+    height: 2rem;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+}
+
+.box {
+    width: 2rem;
+    height: 2rem;
+    border: 1px solid gainsboro;
+    display: grid;
+    place-content: center;
+    border-radius: 5px;
+}

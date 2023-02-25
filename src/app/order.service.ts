@@ -6,7 +6,6 @@ import { IProduct } from './products';
 })
 export class OrderService {
   cart: Array<IProduct> = [];
-  sum: number = 0;
 
   constructor() {}
 
@@ -16,9 +15,5 @@ export class OrderService {
 
   getCart() {
     return this.cart;
-  }
-
-  getSum(par: number) {
-    this.sum += par
   }
 }

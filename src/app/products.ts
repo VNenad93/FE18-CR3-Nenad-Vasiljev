@@ -4,6 +4,7 @@ export interface IProduct {
   description: string;
   price: number;
   available: boolean;
+  qtty: number;
 };
 
 export const products = [
@@ -14,6 +15,7 @@ export const products = [
     description: 'Classic Italian pasta with bacon, eggs, and cheese.',
     price: 12.99,
     available: true,
+    qtty: 1
   },
   {
     name: 'Chicken Alfredo',
@@ -22,6 +24,7 @@ export const products = [
     description: 'Creamy pasta with tender chicken and Parmesan cheese.',
     price: 14.99,
     available: false,
+    qtty: 1
   },
   {
     name: 'Margherita Pizza',
@@ -31,6 +34,7 @@ export const products = [
       'Simple and delicious pizza with tomato sauce, mozzarella, and basil.',
     price: 10.99,
     available: true,
+    qtty: 1
   },
   {
     name: 'Pepperoni Pizza',
@@ -39,6 +43,7 @@ export const products = [
     description: 'Classic pizza with tomato sauce, mozzarella, and pepperoni.',
     price: 12.99,
     available: true,
+    qtty: 1
   },
   {
     name: 'Caesar Salad',
@@ -47,6 +52,7 @@ export const products = [
     description: 'Crisp romaine lettuce with Parmesan cheese and croutons.',
     price: 8.99,
     available: true,
+    qtty: 1
   },
   {
     name: 'Steak Frites',
@@ -55,6 +61,7 @@ export const products = [
     description: 'Juicy steak with crispy fries and garlic butter.',
     price: 19.99,
     available: true,
+    qtty: 1
   },
   {
     name: 'Fish and Chips',
@@ -63,6 +70,7 @@ export const products = [
     description: 'Crispy fried fish with golden fries and tartar sauce.',
     price: 14.99,
     available: true,
+    qtty: 1
   },
   {
     name: 'Burger and Fries',
@@ -71,6 +79,7 @@ export const products = [
     description: 'Juicy beef patty with cheese, lettuce, tomato, and fries.',
     price: 11.99,
     available: false,
+    qtty: 1
   },
   {
     name: 'Pad Thai',
@@ -80,5 +89,6 @@ export const products = [
       'Sweet and tangy stir-fried rice noodles with shrimp and peanuts.',
     price: 13.99,
     available: true,
+    qtty: 1
   },
 ];
