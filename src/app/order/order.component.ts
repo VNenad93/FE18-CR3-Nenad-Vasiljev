@@ -7,9 +7,12 @@ import { IProduct } from '../products';
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.css'],
 })
+
 export class OrderComponent implements OnInit {
   newCart: Array<IProduct> = [];
-  sum: any = 0;
+  sum: number = 0;
+  sumDiscount: number = 0
+  fee: number = 0
 
   constructor(private cs: OrderService) {}
 
@@ -40,12 +43,16 @@ export class OrderComponent implements OnInit {
     });
   }
 
-  removeFromCart(index: number) {}
+  removeFromCart(index: number) {
+    this.newCart.splice(index, 1)
+    this.sumUp()
+  }
 
   sumUp() {
     this.sum = 0;
     this.newCart.forEach((par) => {
       this.sum = Number((this.sum += par.price * par.qtty).toFixed(2));
     });
+    this.sumDiscount = Number((this.sum * 0.85).toFixed(2))
   }
 }

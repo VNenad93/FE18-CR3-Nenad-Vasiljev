@@ -10,7 +10,13 @@ export class OrderService {
   constructor() {}
 
   addToCart(product: IProduct) {
-    this.cart.push(product);
+    const existingProduct = this.cart.find((p) => p.name === product.name);
+    if (existingProduct) {
+      existingProduct.qtty++;
+      console.log(existingProduct.qtty);
+    } else {
+      this.cart.push(product);
+    }
   }
 
   getCart() {

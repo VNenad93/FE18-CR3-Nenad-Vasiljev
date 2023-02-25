@@ -13,15 +13,21 @@
           </div>
           <div *ngFor="let item of newCart; index as i">
               <div class="cart-cont">
-                <p style="width: 30%; border: 1px solid gainsboro;">{{ item.name }}</p>
+                <p style="width: 30%;">{{ item.name }}</p>
                 <span class="text-success" style="width: 15%">{{ item.price }}$</span>
                 <p class="bg-success text-white square" (click)="addQtty(i)">+</p>
                 <p class="box">{{ item.qtty }}</p>
                 <p class="text-white bg-warning square" (click)="subQtty(i)">-</p>
-                <p class="text-white bg-danger square">x</p>
+                <p class="text-white bg-danger square" (click)="removeFromCart(i)">x</p>
               </div>
           </div>
-          <h3 class="text-success">Total:{{ sum }} $</h3>
+          <div *ngIf="sum > 40" class="d-flex">
+            <p style="text-decoration: line-through; margin-top: .5rem;">{{ sum }}$</p>
+            <h3 class="text-success ms-3" >Total: {{ sumDiscount }} $</h3>
+          </div>
+          <div *ngIf="sum < 40">
+            <h3 class="text-success">Total: {{ sum }} $</h3>
+          </div>
       </div>
     </div>
   </div>
