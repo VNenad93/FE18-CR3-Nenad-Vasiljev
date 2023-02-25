@@ -43,6 +43,7 @@ export class OrderComponent implements OnInit {
   }
 
   removeFromCart(index: number) {
+    this.newCart[index].qtty = 1;
     this.newCart.splice(index, 1);
     this.sumUp();
   }
@@ -52,7 +53,7 @@ export class OrderComponent implements OnInit {
     this.newCart.forEach((par) => {
       this.sum += par.price * par.qtty;
     });
-    this.sum = parseFloat((this.sum * 1.1).toFixed(2)); 
-    this.sumDiscount = parseFloat((this.sum * 0.85).toFixed(2)); 
+    this.sum = parseFloat((this.sum * 1.1).toFixed(2));
+    this.sumDiscount = parseFloat((this.sum * 0.85).toFixed(2));
   }
 }
