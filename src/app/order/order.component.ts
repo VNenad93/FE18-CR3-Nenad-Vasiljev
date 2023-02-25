@@ -15,14 +15,14 @@ export class OrderComponent implements OnInit {
 
   ngOnInit(): void {
     this.newCart = this.cs.cart;
-    this.sumUp()
+    this.sumUp();
   }
 
   addQtty(index: number): void {
     this.newCart.forEach((product, i) => {
       if (i === index) {
         product.qtty++;
-        this.sumUp()
+        this.sumUp();
       }
     });
   }
@@ -31,24 +31,21 @@ export class OrderComponent implements OnInit {
     this.newCart.forEach((product, i) => {
       if (i === index) {
         product.qtty--;
-        this.removeFromCart(index)
-        this.sumUp()
+        this.sumUp();
+        if (product.qtty === 0) {
+          product.qtty = 1;
+          this.newCart.splice(i, 1);
+        }
       }
     });
   }
 
-  removeFromCart(index: number) {
-    if(this.newCart[index].qtty == 0) {
-      this.newCart.splice(index, 1)
-      this.newCart[index].qtty == 1
-    }
-  }
+  removeFromCart(index: number) {}
 
   sumUp() {
     this.sum = 0;
     this.newCart.forEach((par) => {
-      this.sum += par.price * par.qtty;
-      console.log(this.sum)
-    }); 
+      this.sum = Number((this.sum += par.price * par.qtty).toFixed(2));
+    });
   }
 }
